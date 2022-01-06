@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
-    "svc-products": "apps/svc-products"
+    "svc-cart": "apps/svc-cart",
+    "svc-products": "apps/svc-products",
+    "svc-user": "apps/svc-user"
   }
 }

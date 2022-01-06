@@ -1,0 +1,21 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "svc-cart-service"
+  },
+  "spec": {
+    "type": "NodePort",
+    "selector": {
+      "app": "svc-cart"
+    },
+    "ports": [
+      {
+        "protocol": "TCP",
+        "port": 80,
+        "targetPort": 3333,
+        "name": "svc-cart-service"
+      }
+    ]
+  }
+}

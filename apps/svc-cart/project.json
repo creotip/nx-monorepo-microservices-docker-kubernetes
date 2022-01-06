@@ -1,0 +1,52 @@
+{
+  "root": "apps/svc-cart",
+  "sourceRoot": "apps/svc-cart/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/svc-cart",
+        "main": "apps/svc-cart/src/main.ts",
+        "tsConfig": "apps/svc-cart/tsconfig.app.json",
+        "assets": ["apps/svc-cart/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/svc-cart/src/environments/environment.ts",
+              "with": "apps/svc-cart/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "svc-cart:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/svc-cart/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/svc-cart"],
+      "options": {
+        "jestConfig": "apps/svc-cart/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

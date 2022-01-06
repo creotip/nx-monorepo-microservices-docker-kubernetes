@@ -1,0 +1,36 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "svc-cart"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "svc-cart"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "svc-cart"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "svc-cart",
+            "image": "svc-cart:latest",
+            "imagePullPolicy": "Never",
+            "ports": [
+              {
+                "containerPort": 3333
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
